@@ -1,5 +1,5 @@
 # ----------- Build stage ----------- #
-FROM maven:3.9.10-eclipse-temurin-17 AS build
+FROM maven:3.9.10-eclipse-temurin-21 AS build
 WORKDIR /app
 
 # Copy Maven project
@@ -10,7 +10,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # ----------- Runtime stage ----------- #
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Copy the jar from the build stage
